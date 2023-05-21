@@ -10,7 +10,7 @@ import wget
 
 
 
-LABELS_PATH = 'custom_model/model_classes.txt'
+LABELS_PATH = 'model_classes.txt'
 
 
 def load_image():
