@@ -1,4 +1,3 @@
-from setuptools import find_packages, setup
 import io
 from PIL import Image
 import streamlit as st
@@ -13,8 +12,9 @@ import wget
 LABELS_PATH = 'model_classes.txt'
 
 
+
 def load_image():
-    uploaded_file = st.file_uploader(label='Pick an image to test')
+    uploaded_file = st.file_uploader(label='Pick an image to get the classificatoin')
     if uploaded_file is not None:
         image_data = uploaded_file.getvalue()
         st.image(image_data)
@@ -49,14 +49,12 @@ def predict(model, categories, image):
 
     probabilities = torch.nn.functional.softmax(output[0], dim=0)
     all_prob, all_catid = torch.topk(probabilities, len(categories))
-    st.write(all_prob.size(0))
-    st.write(all_catid)
     for i in range(all_prob.size(0)):
         st.write(categories[all_catid[i]], all_prob[i].item())
 
 
 def main():
-    st.title('Custom model demo')
+    st.title('Classification Model Demo')
     model = load_model()
     categories = load_labels(LABELS_PATH)
     image = load_image()
