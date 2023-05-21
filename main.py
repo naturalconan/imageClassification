@@ -1,3 +1,4 @@
+from setuptools import find_packages, setup
 import io
 from PIL import Image
 import streamlit as st
