@@ -5,7 +5,6 @@ import torch
 from torch import nn
 from torchvision import transforms
 import os
-import wget
 
 
 
